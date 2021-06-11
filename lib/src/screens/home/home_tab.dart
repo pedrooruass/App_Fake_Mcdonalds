@@ -2,26 +2,67 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:mcdonalds_falseta/src/core/models/menu_item.dart';
 import 'package:mcdonalds_falseta/src/screens/home/home_widgets/hightlight_tile.dart';
+import 'package:mcdonalds_falseta/src/screens/menu_products.dart';
 
 class HomeTab extends StatelessWidget {
-  List<MenuItem> contentList = [
+  final List<MenuItem> hamburguerList = [
     MenuItem(
-      image: "assets/c_image_1.png",
+      image: "assets/hamburguers/c_image_1.png",
       price: 35.50,
       title: "Cheese Burguer",
     ),
     MenuItem(
-      image: "assets/c_image_2.png",
+      image: "assets/hamburguers/c_image_2.png",
       price: 25,
       title: "CheeseBacon Burguer",
     ),
     MenuItem(
-      image: "assets/c_image_3.png",
-      price: 15,
-      title: "Normal Burguer",
+      image: "assets/hamburguers/c_image_3.png",
+      price: 25,
+      title: "All Burguer",
     ),
   ];
 
+  final List<MenuItem> frenchFriesList = [
+    MenuItem(
+      image: "assets/french_fries/frenchfries1.jpg",
+      price: 5,
+      title: "French Fries 1",
+    ),
+    MenuItem(
+      image: "assets/french_fries/frenchfries2.jpg",
+      price: 6,
+      title: "French Fries 1",
+    ),
+    MenuItem(
+      image: "assets/french_fries/frenchfries3.jpg",
+      price: 7,
+      title: "French Fries 3",
+    ),
+    MenuItem(
+      image: "assets/french_fries/frenchfries4.jpeg",
+      price: 8,
+      title: "French Fries 4",
+    ),
+];
+ 
+ final List<MenuItem> sodaList = [
+   MenuItem(
+      image: "assets/sodas/soda1.jpg",
+      price: 1,
+      title: "Fanta",
+    ),
+   MenuItem(
+      image: "assets/sodas/soda2.jpg",
+      price: 2,
+      title: "Zero Coke",
+    ),
+   MenuItem(
+      image: "assets/sodas/soda3.jpg",
+      price: 1,
+      title: "Coke",
+    ),
+ ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +80,9 @@ class HomeTab extends StatelessWidget {
               dotBgColor: Colors.transparent,
               animationDuration: Duration(seconds: 2),
               images: [
-                Image.asset("assets/c_image_1.png", fit: BoxFit.cover),
-                Image.asset("assets/c_image_2.png", fit: BoxFit.cover),
-                Image.asset("assets/c_image_3.png", fit: BoxFit.cover),
+                Image.asset("assets/hamburguers/c_image_1.png", fit: BoxFit.cover),
+                Image.asset("assets/hamburguers/c_image_2.png", fit: BoxFit.cover),
+                Image.asset("assets/hamburguers/c_image_3.png", fit: BoxFit.cover),
               ],
             ),
           ),
@@ -62,35 +103,10 @@ class HomeTab extends StatelessWidget {
           ),
 
           // Menu de Produtos
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: Container(
-                color: Colors.white,
-                child: ExpansionTile(
-                  title: Text("Hamburguers"),
-                  children: contentList.map((e) {
-                    return ListTile(
-                      leading: Container(
-                        height: 35,
-                        width: 35,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage(e.image),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      title: Text(e.title),
-                      trailing: Text("R\$ ${e.price.toStringAsFixed(2).replaceAll(".", ",")}"),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-          ),
+          MenuProducts(title: "hamburguers", foodList: hamburguerList,),
+          MenuProducts(title: "French Fries", foodList: frenchFriesList,),
+          MenuProducts(title: "Soda", foodList: sodaList,),
+
         ],
       ),
     );
