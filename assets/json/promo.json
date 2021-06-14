@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Cheese Burguer",
+        "image": "assets/c_image_1.png",
+        "price": 35.5
+    },
+    {
+        "title": "CheeseBacon Burguer",
+        "image": "assets/c_image_2.png",
+        "price": 25.0
+    },
+    {
+        "title": "Normal Burguer",
+        "image": "assets/c_image_3.png",
+        "price": 15.0
+    },
+    {
+        "title": "Double Burguer",
+        "image": "assets/c_image_1.png",
+        "price": 20.0
+    },
+    {
+        "title": "Triple Burguer",
+        "image": "assets/c_image_2.png",
+        "price": 40.0
+    },
+    {
+        "title": "Supreme Burguer",
+        "image": "assets/c_image_3.png",
+        "price": 60.0
+    }
+]
