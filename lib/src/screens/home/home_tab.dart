@@ -4,23 +4,32 @@ import 'package:mcdonalds_falseta/src/core/models/menu_item.dart';
 import 'package:mcdonalds_falseta/src/screens/home/home_widgets/hightlight_tile.dart';
 import 'package:mcdonalds_falseta/src/screens/menu_products.dart';
 
-class HomeTab extends StatelessWidget {
-  final List<MenuItem> hamburguerList = [
-    MenuItem(
-      image: "assets/hamburguers/c_image_1.png",
-      price: 35.50,
-      title: "Cheese Burguer",
-    ),
-    MenuItem(
-      image: "assets/hamburguers/c_image_2.png",
-      price: 25,
-      title: "CheeseBacon Burguer",
-    ),
-    MenuItem(
-      image: "assets/hamburguers/c_image_3.png",
-      price: 25,
-      title: "All Burguer",
-    ),
+import "package:flutter/services.dart" show rootBundle;
+
+import 'dart:convert';
+
+class HomeTab extends StatefulWidget {
+  @override
+  _HomeTabState createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
+  List<MenuItem> hamburguerList = [
+    // MenuItem(
+    //   image: "assets/hamburguers/c_image_1.png",
+    //   price: 35.50,
+    //   title: "Cheese Burguer",
+    // ),
+    // MenuItem(
+    //   image: "assets/hamburguers/c_image_2.png",
+    //   price: 25,
+    //   title: "CheeseBacon Burguer",
+    // ),
+    // MenuItem(
+    //   image: "assets/hamburguers/c_image_3.png",
+    //   price: 25,
+    //   title: "All Burguer",
+    // ),
   ];
 
   final List<MenuItem> frenchFriesList = [
@@ -44,25 +53,47 @@ class HomeTab extends StatelessWidget {
       price: 8,
       title: "French Fries 4",
     ),
-];
- 
- final List<MenuItem> sodaList = [
-   MenuItem(
+  ];
+
+  final List<MenuItem> sodaList = [
+    MenuItem(
       image: "assets/sodas/soda1.jpg",
       price: 1,
       title: "Fanta",
     ),
-   MenuItem(
+    MenuItem(
       image: "assets/sodas/soda2.jpg",
       price: 2,
       title: "Zero Coke",
     ),
-   MenuItem(
+    MenuItem(
       image: "assets/sodas/soda3.jpg",
       price: 1,
       title: "Coke",
     ),
- ];
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Mesma coisa do Await/Async
+    rootBundle.loadString("assets/json/promo.json").then((value) {
+      // Converter a String para uma lista de Maps
+      final convertedToMap = json.decode(value);
+
+      // Converter a Lista de Maps para uma lista de objetos
+      hamburguerList = List<MenuItem>.from(
+        convertedToMap.map((map) {
+          return MenuItem.fromMap(map);
+        }).toList(),
+
+      );
+      // So Para fazer a tela atualizar
+        setState((){});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,9 +111,12 @@ class HomeTab extends StatelessWidget {
               dotBgColor: Colors.transparent,
               animationDuration: Duration(seconds: 2),
               images: [
-                Image.asset("assets/hamburguers/c_image_1.png", fit: BoxFit.cover),
-                Image.asset("assets/hamburguers/c_image_2.png", fit: BoxFit.cover),
-                Image.asset("assets/hamburguers/c_image_3.png", fit: BoxFit.cover),
+                Image.asset("assets/hamburguers/c_image_1.png",
+                    fit: BoxFit.cover),
+                Image.asset("assets/hamburguers/c_image_2.png",
+                    fit: BoxFit.cover),
+                Image.asset("assets/hamburguers/c_image_3.png",
+                    fit: BoxFit.cover),
               ],
             ),
           ),
@@ -103,10 +137,18 @@ class HomeTab extends StatelessWidget {
           ),
 
           // Menu de Produtos
-          MenuProducts(title: "hamburguers", foodList: hamburguerList,),
-          MenuProducts(title: "French Fries", foodList: frenchFriesList,),
-          MenuProducts(title: "Soda", foodList: sodaList,),
-
+          MenuProducts(
+            title: "hamburguers",
+            foodList: hamburguerList,
+          ),
+          MenuProducts(
+            title: "French Fries",
+            foodList: frenchFriesList,
+          ),
+          MenuProducts(
+            title: "Soda",
+            foodList: sodaList,
+          ),
         ],
       ),
     );
