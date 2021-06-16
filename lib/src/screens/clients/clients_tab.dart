@@ -1,24 +1,34 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:mcdonalds_falseta/src/core/models/user_info.dart';
+import "package:flutter/services.dart" show rootBundle;
 
-class ClientsTab extends StatelessWidget {
-  final List<UserInfo> usersInfo = [
-    UserInfo(
-      name: "Pedro Ruas",
-      email: "ruasp0509@gmail.com",
-      purchaseCount: 5,
-    ),
-    UserInfo(
-      name: "Malu Focassio",
-      email: "malu0204@gmail.com",
-      purchaseCount: 15,
-    ),
-    UserInfo(
-      name: "Klebao da Silva Sauro",
-      email: "klebaoSauro@gmail.com",
-      purchaseCount: 2,
-    ),
-  ];
+class ClientsTab extends StatefulWidget {
+  @override
+  _ClientsTabState createState() => _ClientsTabState();
+}
+
+class _ClientsTabState extends State<ClientsTab> {
+  List<UserInfo> usersInfo = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    rootBundle.loadString("assets/json/usersData.json").then((value) {
+      final convertedToMap = json.decode(value);
+      print(convertedToMap);
+
+      usersInfo = List<UserInfo>.from(
+        convertedToMap.map((map) {
+          return UserInfo.fromMap(map);
+        }),
+      );
+
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,20 +39,24 @@ class ClientsTab extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Users", style: TextStyle(color: Colors.white, fontSize: 35),),
+            child: Text(
+              "Users",
+              style: TextStyle(color: Colors.white, fontSize: 35),
+            ),
           ),
-          // Expanded(child: 2 way to do)
-          ListView(
-            shrinkWrap: true,
-            children: usersInfo.map(
-              (user) {
-                return ListTile(
-                  title: Text(user.name),
-                  subtitle: Text(user.email),
-                  trailing: Text("${user.purchaseCount} pur."),
-                );
-              },
-            ).toList(),
+
+          Expanded(
+            child: ListView(
+              children: usersInfo.map(
+                (user) {
+                  return ListTile(
+                    title: Text(user.name),
+                    subtitle: Text(user.email),
+                    trailing: Text("${user.purchaseCount} pur."),
+                  );
+                },
+              ).toList(),
+            ),
           ),
         ],
       ),

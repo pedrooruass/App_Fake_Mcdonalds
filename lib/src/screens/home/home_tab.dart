@@ -78,7 +78,7 @@ class _HomeTabState extends State<HomeTab> {
     super.initState();
 
     // Mesma coisa do Await/Async
-    rootBundle.loadString("assets/json/promo.json").then((value) {
+    rootBundle.loadString("assets/json/menuData.json").then((value) {
       // Converter a String para uma lista de Maps
       final convertedToMap = json.decode(value);
 

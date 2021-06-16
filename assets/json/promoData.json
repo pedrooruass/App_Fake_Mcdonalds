@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Hamburguer Duplo",
+        "oldValue": 20.0,
+        "newValue": 17.8,
+        "image": "assets/hamburguers/c_image_3.png"
+    },
+    {
+        "title": "Hamburguer",
+        "oldValue": 17.0,
+        "newValue": 14.8,
+        "image": "assets/hamburguers/c_image_2.png"
+    },
+    {
+        "title": "Hamburguer Supreme",
+        "oldValue": 21.0,
+        "newValue": 12.8,
+        "image": "assets/hamburguers/c_image_1.png"
+    },
+    {
+        "title": "Hamburguer Duplo",
+        "oldValue": 20.0,
+        "newValue": 17.8,
+        "image": "assets/hamburguers/c_image_3.png"
+    },
+    {
+        "title": "Hamburguer",
+        "oldValue": 17.0,
+        "newValue": 14.8,
+        "image": "assets/hamburguers/c_image_2.png"
+    },
+    {
+        "title": "Hamburguer Supreme",
+        "oldValue": 21.0,
+        "newValue": 12.8,
+        "image": "assets/hamburguers/c_image_1.png"
+    }
+]

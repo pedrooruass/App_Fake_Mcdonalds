@@ -11,4 +11,15 @@ class UserInfo {
     @required this.purchaseCount,
   });
   
+
+  factory UserInfo.fromMap(Map<String, dynamic> map){
+    return UserInfo(
+      name: map["name"],
+      email: map["email"],
+      purchaseCount: map["purchaseCount"],
+    );
+  }
+
+  @override
+  String toString() => 'UserInfo(name: $name | email: $email, | purchaseCount: $purchaseCount)';
 }
