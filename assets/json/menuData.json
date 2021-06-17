@@ -1,32 +1,55 @@
-[
-    {
-        "title": "Cheese Burguer",
-        "image": "assets/hamburguers/c_image_1.png",
-        "price": 35.5
-    },
-    {
-        "title": "CheeseBacon Burguer",
-        "image": "assets/hamburguers/c_image_2.png",
-        "price": 25.0
-    },
-    {
-        "title": "Normal Burguer",
-        "image": "assets/hamburguers/c_image_3.png",
-        "price": 15.0
-    },
-    {
-        "title": "Double Burguer",
-        "image": "assets/hamburguers/c_image_1.png",
-        "price": 20.0
-    },
-    {
-        "title": "Triple Burguer",
-        "image": "assets/hamburguers/c_image_2.png",
-        "price": 40.0
-    },
-    {
-        "title": "Supreme Burguer",
-        "image": "assets/hamburguers/c_image_3.png",
-        "price": 60.0
+{
+    "menu": {
+        "hamburguers": [
+            {
+                "title": "Cheese Burguer",
+                "image": "assets/hamburguers/c_image_1.png",
+                "price": 35.5
+            },
+            {
+                "title": "CheeseBacon Burguer",
+                "image": "assets/hamburguers/c_image_2.png",
+                "price": 25.0
+            },
+            {
+                "title": "Normal Burguer",
+                "image": "assets/hamburguers/c_image_3.png",
+                "price": 15.0
+            }
+        ],
+        "sodas": [
+            {
+                "title": "First Soda",
+                "image": "assets/sodas/soda1.jpg",
+                "price": 5.0
+            },
+            {
+                "title": "Second Soda",
+                "image": "assets/sodas/soda2.jpg",
+                "price": 10.0
+            },
+            {
+                "title": "Third Soda",
+                "image": "assets/sodas/soda3.jpg",
+                "price": 15.0
+            }
+        ],
+        "fries": [
+            {
+                "title": "Normal fries",
+                "image": "assets/french_fries/frenchfries1.jpg",
+                "price": 35.5
+            },
+            {
+                "title": "Big fries",
+                "image": "assets/french_fries/frenchfries2.jpg",
+                "price": 25.0
+            },
+            {
+                "title": "Giant fries",
+                "image": "assets/french_fries/frenchfries3.jpg",
+                "price": 15.0
+            }
+        ]
     }
-]
+}

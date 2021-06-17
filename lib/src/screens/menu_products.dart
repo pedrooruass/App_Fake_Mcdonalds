@@ -6,10 +6,12 @@ class MenuProducts extends StatelessWidget {
 
   final String title;
   final List<MenuItem> foodList;
+  final Color color;
 
    MenuProducts({
     this.title,
     this.foodList,
+    this.color,
   });
 
   @override
@@ -19,9 +21,10 @@ class MenuProducts extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: Container(
-                color: Colors.white,
+                color: color,
                 child: ExpansionTile(
-                  initiallyExpanded: true,
+                  // Mudar pra true
+                  initiallyExpanded: false,
                   title: Text(title),
                   children: foodList.map((e) {
                     return ListTile(

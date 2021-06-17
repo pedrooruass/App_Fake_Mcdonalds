@@ -1,47 +1,83 @@
 import 'package:flutter/material.dart';
 
+import 'package:mcdonalds_falseta/src/core/models/promo_item.dart';
+
 class HightlightTile extends StatelessWidget {
+  final PromoItem promoItem;
+
+  const HightlightTile({
+    this.promoItem,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      margin: EdgeInsets.only(left: 10),
-
-      decoration: BoxDecoration(
-        color: Colors.red,
+    return Padding(
+      padding: const EdgeInsets.only(left: 8),
+      child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-      ),
-      
-      child: Row(
-        children: [
-          Container(
-            margin: EdgeInsets.only(right: 10),
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              shape: BoxShape.circle,
-            ),
+        child: Container(
+          width: 200,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(promoItem.image), fit: BoxFit.cover),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
+          child: Stack(
             children: [
-              Text(
-                "Food",
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: Container(
+                  color: Colors.black.withOpacity(0.7),
+                  height: 55,
+                ),
               ),
-              Row(
-                children: [
-                  Text("10.50"),
-                  Icon(Icons.arrow_forward),
-                  Text("10.50"),
-                ],
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        promoItem.title,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "R\$ ${promoItem.oldValue}",
+                          style: TextStyle(
+                            color: Colors.red,
+                            decoration: TextDecoration.lineThrough,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "R\$ ${promoItem.newValue}",
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
