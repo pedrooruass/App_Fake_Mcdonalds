@@ -9,6 +9,8 @@ import "package:flutter/services.dart" show rootBundle;
 
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 class HomeTab extends StatefulWidget {
   @override
   _HomeTabState createState() => _HomeTabState();
@@ -20,9 +22,32 @@ class _HomeTabState extends State<HomeTab> {
   List<MenuItem> frenchFriesList = [];
   List<MenuItem> sodaList = [];
 
+  Future<void> callingServer() async {
+/* -------------------------------------------------------------------------- */
+/*                       Requsição de dados de um server                      */
+/* -------------------------------------------------------------------------- */
+
+    // * Criar uma rquisição no servidor
+
+    http.Response resposta =
+        await http.get("https://jsonplaceholder.typicode.com/users");
+
+    print(resposta.body);
+
+    // * Tratar nossa requisição
+
+    // * Converter os dados retornados para maps
+
+/* -------------------------------------------------------------------------- */
+  }
+
   @override
   void initState() {
     super.initState();
+
+    // -----------------------------
+    callingServer();
+    // -----------------------------
 
     // Mesma coisa do Await/Async
     rootBundle.loadString("assets/json/menuData.json").then((value) {
